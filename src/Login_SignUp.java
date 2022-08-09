@@ -33,16 +33,7 @@ public class Login_SignUp extends JFrame{              //GUI for login page
 
     }      //Constructor which creates frame of Login box
 
-    public void FrameSetup(){
-        setLayout(new FlowLayout());
-                                    //Flowlayout- (awt),    BorderLayout-(awt),     CardLayout-(awt)    *GridLayout-(awt)   *GridBagLayout-(awt)
-                                    //Boxlayout-(swing)  *OverlayLayout-(swing)
-        setVisible(true);
-        setSize(400,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //this is used to close the window
-                                                            // JFrame.EXIT_ON_CLOSE = 3
-                                                            // need to give a const int in the field
-    }
+
 }
 
 class Login extends Login_SignUp{
