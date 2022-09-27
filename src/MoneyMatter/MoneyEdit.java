@@ -1,5 +1,6 @@
 package MoneyMatter;        //what happens to money
 
+import javax.swing.*;
 import java.util.*;
 abstract public class MoneyEdit {               //operations on acc money *** abstract class n parent class
     double acc_balance;                         //current balance
@@ -45,8 +46,12 @@ class Deposit extends MoneyEdit{
 }
 
 class CurrentBalance extends MoneyEdit{
+    CurrentBalance(){
+        JButton cur_bal = new JButton("Current Balance");
+    }
     @Override
     void EditedBalance() {
         System.out.println("Current Balance in account: "+acc_balance);
     }
+
 }
