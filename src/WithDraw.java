@@ -26,15 +26,17 @@ public class WithDraw extends JFrame {
 
     }
 
-    //Withdraw actionlistener
-    public void dep_buttonActionListener(){
+    //Withdraw action listener
+    public void wd_buttonActionListener(){
         wd_button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                JLabel txt = new JLabel();
-//********************************************************************************************************
-                //lg.setVisible(true);
-                //dep_button.setVisible(false);
-
+            public void actionPerformed(ActionEvent e) {
+                JLabel txt;
+                //**********************************************************************************************
+                /*if () {
+                    txt = new JLabel("Money Withdrawn");
+                } else {
+                    txt = new JLabel("Transaction Discarded due to Error");
+                }*/
             }
         });
     }
