@@ -1,7 +1,9 @@
 package MoneyMatter;        //what happens to money
 
+import AccountDetails.*;
 import javax.swing.*;
 import java.util.*;
+
 abstract public class MoneyEdit {               //operations on acc money *** abstract class n parent class
     double acc_balance;                         //current balance
     Scanner sc = new Scanner(System.in);

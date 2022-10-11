@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import AccountDetails.*;
 
-public class Deposit extends JFrame {
+public class Deposit extends Login_SignUp{
 
     JFrame deposit_frame = new JFrame("Deposit your Money");
     JTextField deposit_money = new JTextField("Enter Amount");
     JButton dep_button = new JButton("Deposit");
+    JButton CurrentBal = new JButton("Current Balance");
 
     Deposit() {
         //JFrame deposit_frame = new JFrame("Deposit your Money");
@@ -25,6 +27,9 @@ public class Deposit extends JFrame {
         //JButton dep_button = new JButton("Deposit");
         //Button for depositing money
         deposit_frame.add(dep_button);
+
+        deposit_frame.add(CurrentBal);
+        CurrentBalActionListener();
     }
 
     //action listeners
@@ -35,6 +40,19 @@ public class Deposit extends JFrame {
 
                 //lg.setVisible(true);
                 dep_button.setVisible(false);
+
+            }
+        });
+    }
+
+    public void CurrentBalActionListener(){
+        CurrentBal.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+
+                Account ac = new Account();
+                String cno = Card_text.getText();
+                System.out.println(cno);
+                JOptionPane.showMessageDialog(deposit_frame,ac.setBalance(cno));
 
             }
         });

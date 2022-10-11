@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import AccountDetails.*;
 
-public class WithDraw extends JFrame {
+public class WithDraw extends Login_SignUp {
 
     //Variables for class
     JFrame withdraw_frame = new JFrame("Withdraw your Money");
     JButton wd_button = new JButton("Withdraw");
+    JButton CurrentBal = new JButton("Current Balance");
 
     WithDraw() {
         //JFrame withdraw_frame = new JFrame("Withdraw your Money");
@@ -24,6 +26,9 @@ public class WithDraw extends JFrame {
         //JButton wd_button = new JButton("Withdraw");
         withdraw_frame.add(wd_button);
 
+        withdraw_frame.add(CurrentBal);
+        CurrentBalActionListener();
+
     }
 
     //Withdraw action listener
@@ -37,6 +42,19 @@ public class WithDraw extends JFrame {
                 } else {
                     txt = new JLabel("Transaction Discarded due to Error");
                 }*/
+            }
+        });
+    }
+
+    public void CurrentBalActionListener(){
+        CurrentBal.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+
+                Account ac = new Account();
+                String cno = Card_text.getText();
+                System.out.println(cno);
+                JOptionPane.showMessageDialog(withdraw_frame,ac.setBalance(cno));
+
             }
         });
     }

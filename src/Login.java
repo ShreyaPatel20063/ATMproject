@@ -2,12 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import AccountDetails.*;
 
 public class Login extends JFrame {
 
     JFrame login_page = new JFrame("Edit Money");
     JButton Withdraw = new JButton("Withdraw Money");
-    JButton CurrentBal = new JButton("Current Balance");
+
     JButton Deposit = new JButton("Deposit Money");
 
     public Login() {
@@ -23,11 +24,11 @@ public class Login extends JFrame {
 
         login_page.add(Withdraw);
         login_page.add(Deposit);
-        login_page.add(CurrentBal);
+        //login_page.add(CurrentBal);
 
         WithdrawActionListener();
         DepositActionListener();
-        CurrentBalActionListener();
+
     }
 
     //ActionListeners
@@ -43,15 +44,7 @@ public class Login extends JFrame {
             }
         });
     }
-    public void CurrentBalActionListener(){
-        CurrentBal.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
 
-                //nbh
-
-            }
-        });
-    }
     public void DepositActionListener(){
         Deposit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){

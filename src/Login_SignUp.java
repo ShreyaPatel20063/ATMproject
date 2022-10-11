@@ -14,10 +14,12 @@ class Login_SignUp extends JFrame{
     JLabel Card_label = new JLabel("Card Number : ");
     JLabel Pswrd_label = new JLabel("Password : ");
     JLabel CVV_label = new JLabel("CVV : ");
-    JTextField Card_text = new JTextField(12);
+    public JTextField Card_text = new JTextField(12);
     JPasswordField Pswrd_Text = new JPasswordField(20);
     JPasswordField CVV_Text = new JPasswordField(3);
     JButton login_button = new JButton("Log In");        //create login button
+
+
 
     Login_SignUp(){          // Constructor with JFrame methods
 
@@ -52,6 +54,9 @@ class Login_SignUp extends JFrame{
                         Login lg = new Login();
                         lg.setVisible(true);
                         lgsg_Frame.setVisible(false);
+
+                    }else {
+                        JOptionPane.showMessageDialog(lgsg_Frame, "Login Unsuccessful, Pswrd/CVV does not match!!");
                     }
                 }
             });
@@ -59,8 +64,8 @@ class Login_SignUp extends JFrame{
     }
 
     boolean detailsValidation(){
-        String cno, cvv;
-        cno = Card_text.getText();
+        String  cvv;
+        String cno = Card_text.getText();
         cvv = String.valueOf(CVV_Text.getPassword());
         String pswrd = String.valueOf(Pswrd_Text.getPassword());
 
