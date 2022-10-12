@@ -9,25 +9,25 @@ import AccountDetails.*;
 * It replaces initial add() function and overwrites it*/
 class Login_SignUp extends JFrame{
 
-    JFrame lgsg_Frame = new JFrame("ATM Walk-through Project");
+    JFrame lgsg_Frame = new JFrame("ATM Walk-through Project");         // frame created
 
-    JLabel Card_label = new JLabel("Card Number : ");
-    JLabel Pswrd_label = new JLabel("Password : ");
-    JLabel CVV_label = new JLabel("CVV : ");
-    public JTextField Card_text = new JTextField(12);
-    JPasswordField Pswrd_Text = new JPasswordField(20);
-    JPasswordField CVV_Text = new JPasswordField(3);
-    JButton login_button = new JButton("Log In");        //create login button
+    JLabel Card_label = new JLabel("Card Number : ");                   //card number label
+    JLabel Pswrd_label = new JLabel("Password : ");                     //password label
+    JLabel CVV_label = new JLabel("CVV : ");                            //cvv label
+    public JTextField Card_text = new JTextField(12);                //card number textbox
+    JPasswordField Pswrd_Text = new JPasswordField(20);              //password textbox - password type
+    JPasswordField CVV_Text = new JPasswordField(3);                 //cvv textbox - password type
+    JButton login_button = new JButton("Log In");                       //login button
 
+    /**Constructor has all the components added in frame*/
 
-
-    Login_SignUp(){          // Constructor with JFrame methods
+    Login_SignUp(Account ac){          // Constructor with JFrame methods
 
         //frame created
-        lgsg_Frame.setVisible(true);
-        lgsg_Frame.setLayout(new FlowLayout());
-        lgsg_Frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        lgsg_Frame.setBounds(300, 300, 300, 250);
+        lgsg_Frame.setVisible(true);                                    //frame shown
+        lgsg_Frame.setLayout(new FlowLayout());                         //layout setup
+        lgsg_Frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);          //close button activate
+        lgsg_Frame.setBounds(300, 300, 300, 250);     //location of frame on screen
 
         // operations added to frame
         lgsg_Frame.add(Card_label);
@@ -39,19 +39,21 @@ class Login_SignUp extends JFrame{
         login_button.setBounds(320, 400, 20, 7);
         lgsg_Frame.add(login_button);                               //add login button
 
-        LoginActionListener();
+        LoginActionListener(ac);                                    //Login button reader
+    }
 
+    /** Login ActionListener has a validation function
+     * if data is verified, the process will go on
+     * else msg will be displayed ERROR*/
 
-    }      //Constructor which creates frame of Login box
-
-    public void LoginActionListener(){
+    public void LoginActionListener(Account ac){
 
             login_button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (detailsValidation()){
+                    if (detailsValidation(ac)){
                         //JLabel txt = new JLabel("Clicked");
-                        Login lg = new Login();
+                        Login lg = new Login(ac, getCNO());
                         lg.setVisible(true);
                         lgsg_Frame.setVisible(false);
 
@@ -63,23 +65,26 @@ class Login_SignUp extends JFrame{
 
     }
 
-    boolean detailsValidation(){
-        String  cvv;
+    /** getCNO returns the card number*/
+
+    String getCNO(){
         String cno = Card_text.getText();
+        return cno;
+    }
+
+    /** validate function returns
+     * TRUE for arraylist containing card details
+     * FALSE for arraylist and given details does not match*/
+
+    boolean detailsValidation(Account ac){
+        String  cvv;
+        String cno = getCNO();
         cvv = String.valueOf(CVV_Text.getPassword());
         String pswrd = String.valueOf(Pswrd_Text.getPassword());
 
-        JLabel txt = new JLabel(cno);
-        JLabel txt1 = new JLabel(cvv);
-        JLabel txt2 = new JLabel(pswrd);
-        lgsg_Frame.add(txt);
-        lgsg_Frame.add(txt1);
-        lgsg_Frame.add(txt2);
-
-        Account ac = new Account();
+        //Account ac = new Account();
         return ac.containAc(cno, pswrd, cvv);
     }
-
 
 }
 

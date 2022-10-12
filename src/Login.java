@@ -8,10 +8,11 @@ public class Login extends JFrame {
 
     JFrame login_page = new JFrame("Edit Money");
     JButton Withdraw = new JButton("Withdraw Money");
+    JButton CurrentBal = new JButton("Current Balance");
 
     JButton Deposit = new JButton("Deposit Money");
 
-    public Login() {
+    public Login(Account ac,String cno) {
         //JFrame login_page = new JFrame("Edit Money");
         login_page.setVisible(true);
         login_page.setLayout(new FlowLayout());
@@ -24,20 +25,20 @@ public class Login extends JFrame {
 
         login_page.add(Withdraw);
         login_page.add(Deposit);
-        //login_page.add(CurrentBal);
+        login_page.add(CurrentBal);
 
-        WithdrawActionListener();
-        DepositActionListener();
-
+        WithdrawActionListener(ac, cno);
+        DepositActionListener(ac, cno);
+        CurrentBalActionListener(ac, cno);
     }
 
     //ActionListeners
-    public void WithdrawActionListener(){
+    public void WithdrawActionListener(Account ac, String cno){
         Withdraw.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
                 //Withdraw screen opened
-                WithDraw wd = new WithDraw();
+                WithDraw wd = new WithDraw(ac,cno);
                 wd.setVisible(true);
                 login_page.setVisible(false);
 
@@ -45,14 +46,25 @@ public class Login extends JFrame {
         });
     }
 
-    public void DepositActionListener(){
+    public void DepositActionListener(Account ac, String cno){
         Deposit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //JLabel txt = new JLabel("Clicked");
-                Deposit dep = new Deposit();
+                Deposit dep = new Deposit(ac,cno);
                 dep.setVisible(true);
                 login_page.setVisible(false);
 
+            }
+        });
+    }
+    public void CurrentBalActionListener(Account ac, String cno){
+        CurrentBal.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+
+                //Account ac = new Account();
+                //String cno = Card_text.getText();
+                //System.out.println(cno);
+                JOptionPane.showMessageDialog(login_page,ac.setBalance(cno));
             }
         });
     }

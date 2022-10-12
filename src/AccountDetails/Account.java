@@ -44,26 +44,32 @@ public class Account {
         return cvv;
     }
 
+    public Double depoBalance(int ind, Double edit){
+        balance[ind] = balance[ind] + edit;
+        return balance[ind];
+    }
+    public Double withBalance(int ind, Double edit){
+        balance[ind] = balance[ind] - edit;
+        return balance[ind];
+    }
+
     public Double setBalance(String cno){
         int ind = index(cno);
         return balance[ind];
     }
-
 
     public int index(String cno){           // kind of session == login info
         int flag =-1;
         for (int i = 0; i < 3; i++) {
             if(accdetails.get(i).contains(setCno(cno))){
                 flag =i;
-                System.out.println(flag);                           //11111111111
+                //System.out.println(flag);                           //11111111111
                 break;
             }
         }
-        System.out.println(flag);                                   //2222222222
+        //System.out.println(flag);                                   //2222222222
         return flag;
     }
-
-
 
     public boolean containAc(String cno, String pswrd, String cvv){
         int index = index(cno);
