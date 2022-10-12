@@ -4,15 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import AccountDetails.*;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 public class Deposit extends Login_SignUp{
 
     JFrame deposit_frame = new JFrame("Deposit your Money");
     JTextField deposit_money = new JTextField(6);
     JButton dep_button = new JButton("Deposit");
     JButton back = new JButton("BACK");
-    //JButton CurrentBal = new JButton("Current Balance");
+
 
     Deposit(Account ac, String cno) {
         super(ac);
@@ -24,35 +22,33 @@ public class Deposit extends Login_SignUp{
         deposit_frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         deposit_frame.add(new JLabel("Total Amount to Deposit:"));
-
-        //JTextField deposit_money = new JTextField("Enter Amount");
-        // field for adding money input
         deposit_frame.add(deposit_money);
 
-        //JButton dep_button = new JButton("Deposit");
-        //Button for depositing money
         deposit_frame.add(dep_button);
         deposit_frame.add(back);
 
-        //deposit_frame.add(CurrentBal);
-        //CurrentBalActionListener(cno);
         dep_buttonActionListener(ac,cno);
         backActionListener(ac,cno);
     }
 
+    /** getDeposit method is used to handle exception
+     * if text value is empty or has characters, it will display msg that "Amount not Entered / Incorrect Syntax"
+     * else it will return Double value to be deducted from the current balance*/
     Double getDeposit(){
         Double Depositmoney;
         try {
             Depositmoney = Double.valueOf(deposit_money.getText());
             return Depositmoney;
         }catch (Exception e){
-            JOptionPane.showMessageDialog(deposit_frame, "Amount not Entered");
+            JOptionPane.showMessageDialog(deposit_frame, "Amount not Entered / Incorrect Syntax");
             return 0.0;
         }
 
     }
 
-
+    /** deposit button actionListener
+     * it will pass cno and ac
+     * if textbox is empty, balance will not b displayed*/
     //action listeners
     public void dep_buttonActionListener(Account ac, String cno){
         dep_button.addActionListener(new ActionListener(){
@@ -66,6 +62,9 @@ public class Deposit extends Login_SignUp{
             }
         });
     }
+
+    /** back button action listener
+     * returns to the withdraw/deposit/currentBalance page*/
     public void backActionListener(Account ac,String cno){
         back.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){

@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import AccountDetails.*;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 public class WithDraw extends Login_SignUp{
 
     //Variables for class
